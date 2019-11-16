@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: apt-get install inkscape texlive-full
+      - run: sudo apt-get install inkscape texlive-full
       - uses: actions/checkout@v1
       - name: build
         run: cmake . && make
