@@ -8,10 +8,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: build
-      run: cmake . && make
-    - uses: actions/upload-artifact@master
-      with:
-        name: cv.pdf
-        path: cv.pdf
+      - run: apt-get install inkscape texlive-full
+      - uses: actions/checkout@v1
+      - name: build
+        run: cmake . && make
+      - uses: actions/upload-artifact@master
+        with:
+          name: cv.pdf
+          path: cv.pdf
