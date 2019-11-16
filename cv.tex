@@ -1,0 +1,150 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=1.1cm]{geometry}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usetikzlibrary{calc}
+\graphicspath{{icons/}}
+\input{icons.tex}
+\input{styles.tex}
+
+\def\header{%
+  \begin{tikzpicture}[every node/.style={inner ysep=0.1cm, inner xsep=0cm, anchor=north west}]
+    \coordinate (topleft) at (0, 0);
+    \coordinate (topright) at (\textwidth, 0);
+
+    \node[font=\Large] (name) at (topleft) {Tingmao Wang};
+    \node (bio) at (name.south west) {Computer Science undergraduate at\uclicon{}UCL};
+
+    \node[anchor=north east, text width=0.4\textwidth, align=flush right, inner ysep=0cm] (contacts) at (topright)
+      {m@maowtm.org \\
+        {\color{link}\href{https://github.com/micromaomao}{\githubicon{} micromaomao}}%
+          \IfFileExists{phone_number.txt}{\\ \input{phone_number.txt}}{}
+        };
+
+    \coordinate (bottomleft) at ($(bio.south west)+(0, -0.1cm)$);
+    \coordinate (bottomright) at ($(bottomleft)+(\textwidth, 0)$);
+
+    \path[use as bounding box] (topleft) rectangle (bottomright);
+
+    \path[draw] ($(bottomleft)+(-0.2cm,0)$) -- ($(bottomright)+(0.2cm,0)$);
+  \end{tikzpicture}%
+}
+
+\begin{document}
+  \pagestyle{empty}%
+  \header
+
+  \section{Education}
+
+  \begin{itemize}
+    \item \ongoing{} \textbf{BSc Computer Science} \dashdiv{} University College London \dashdiv{} 2019-2022
+
+      Relevant modules \& courseworks (able to provide code upon request):
+
+      \begin{itemize}
+
+        \item Principles of Programming: C \& Haskell
+
+        \begin{itemize}
+          \item Built a journey planner for the\tflicon{} London rail network (tube \& others) entirely in C.
+
+          \begin{itemize}
+            \item Shows paths with least station, least interchange or paths that avoid certain fare zones.
+          \end{itemize}
+        \end{itemize}
+
+        \item Design and Professional Skills: debugging, code style, algorithm, etc.
+
+        \item Engineering Challenges 1: digital circuit, MIPS architecture.
+
+        \begin{itemize}
+          \item Built a simplified MIPS computer (8 instructions implemented) in a 2 person team on FPGA by drawing schematics. Self-taught Verilog and applied to the project.
+        \end{itemize}
+
+      \end{itemize}
+
+    \item \textbf{A-Level} \dashdiv{} 2017-2019
+
+      Math, Further Math, Physics and Economics \dashdiv{} A*A*A*A*
+  \end{itemize}
+
+  \section{Skills}
+
+  \begin{itemize}[itemsep=0.1\parskip]
+    \item Languages: C, Rust, Go, JavaScript, Python, \TeX.
+
+    \begin{itemize}
+      \item Some introduction to Haskell and Wolfram Language (Mathematica).
+    \end{itemize}
+
+    \item Linux (scripting, programming \& server administration), Git, Docker.
+
+    \item Some algorithm \& data structure:
+
+    \begin{itemize}
+      \item Binary search tree, hash table, queue, graphs (Path finding, MST, etc.), dynamic programming.
+    \end{itemize}
+
+    \item Basic cryptography ((a)symmetric encryption, hashing, Merkle tree, etc.) \& security (web \& binary).
+
+  \end{itemize}
+
+  \section{Projects}
+
+  \def\ghurl#1{%
+    \href{#1}{({\blueghicon{}})}%
+  }
+
+  {\color{black!70!white}(Everything listed below are my own projects.)}
+
+  \begin{itemize}
+
+    \item \href{https://status.maowtm.org}{\color{link}\textbf{status.maowtm.org}} \ghurl{https://github.com/micromaomao/serverwatch}: simple server monitoring with web push notification \dashdiv{} Aug-Sept 2019.
+
+    \begin{itemize}
+      \item Backend built with Rust, using the \href{https://rocket.rs}{\color{link}Rocket} framework and SQLite database.
+      \item Frontend built with \href{https://svelte.dev/}{\color{link}Svelte}.
+    \end{itemize}
+
+    \item \href{https://paper.sc}{\color{link}\textbf{paper.sc}} \ghurl{https://github.com/micromaomao/schsrch}: CIE past paper search engine \dashdiv{} 2016-2019
+
+    \begin{itemize}
+      \item Backend built with Node.js, using Mongodb and Elasticsearch.
+      \item Frontend built with React, using Webpack for bundling. Acts as a PWA with ServiceWorker.
+      \item Made a PDF viewer: using PDF.js for rendering, wrote own input handling (touch screen \& Macbook trackpad pinch-to-zoom, inertia scrolling, etc.).
+      \item Parses the document to find matching question numbers and hence create hyperlinks in the PDF viewer between question paper and mark scheme for the same question.
+    \end{itemize}
+
+    \item \textbf{ts-player} \ghurl{https://github.com/micromaomao/ts-player}: A terminal recorder that produces files capable of efficient random access \dashdiv{} Jan 2019
+
+    \begin{itemize}
+      \item Written in Go, used on Linux.
+      \item Uses \href{https://developers.google.com/protocol-buffers}{\color{link}protobuf} for storage format and \href{https://facebook.github.io/zstd/}{\color{link}zstd} for compression.
+      \item Uses the Linux termios API to execute process in monitored PTY, and a Golang binding of \href{http://www.leonerd.org.uk/code/libvterm/}{\color{link}libvterm} to parse terminal escape sequences (to get the color and position of characters right).
+    \end{itemize}
+
+    \item \textbf{go-ecbpass} \ghurl{https://github.com/micromaomao/go-ecbpass}: deterministic pseudo-random password generator \dashdiv{} Oct 2018
+
+    \begin{itemize}
+      \item Written in Go, used on Linux.
+
+      \item Uses scrypt to derive password for each website based on its domain and the user's master password.
+
+      \item No need to store any data.
+    \end{itemize}
+
+  \end{itemize}
+
+  \section{Other Interests}
+
+  \begin{itemize}[itemsep=0.1\parskip]
+    \item Able to do some basic 3D modeling \href{https://maowtm.org/Artworks/}{\color{link}(some works I've done)}; also interested in animation and graphic design.
+    \item Currently learning Japanese in spare time.
+  \end{itemize}
+
+\end{document}

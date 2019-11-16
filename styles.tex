@@ -1,0 +1,27 @@
+\makeatletter
+\renewcommand\section{%
+  \@startsection{section}{1}{\z@}{0.1\baselineskip}{0.1\baselineskip \@minus 0.1\baselineskip}{\bfseries\MakeUppercase}*%
+}
+\makeatother
+
+\def\dashdiv{{%
+  \def\sp{0.3em minus 0.1em}%
+  \hspace{\sp}%
+  \color{black!50!white}%
+  --%
+  \hspace{\sp}%
+}}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em plus 0.5em minus 0.5em}
+
+\usepackage{enumitem}
+\setitemize{topsep=0em, itemsep=0.5\parskip, partopsep=0em, parsep=0.5\parskip}
+
+\colorlet{link}{blue!50!black}
+
+\def\ongoing{%
+  \tikz[baseline=(t.base)]{
+    \node[fill=orange!30!white, use as bounding box, inner sep=0.25em, font=\small] (t) {\textsc{ongoing}}
+  }%
+}
