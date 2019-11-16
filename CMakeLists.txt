@@ -11,11 +11,11 @@ function(add_tex)
   set(dependent_files "")
   if(nb_args GREATER 1)
     list(SUBLIST args 1 -1 dependent_files)
-    foreach(dep ${dependent_files})
+    foreach(dep ${dependent_files} "${main_file}")
       get_filename_component(dep_name "${dep}" NAME_WE)
       get_filename_component(dep_ext "${dep}" EXT)
       if("${dep_ext}" STREQUAL ".tex")
-        list(APPEND other_byproducts "${dep_name}.aux" "${dep_name}.out")
+        list(APPEND other_byproducts "${dep_name}.aux" "${dep_name}.out" "${dep_name}.log")
       endif()
     endforeach()
   else()
@@ -27,7 +27,7 @@ function(add_tex)
     WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
     COMMAND ${CMAKE_COMMAND} -Dmain_name="${main_name}" -P "${CMAKE_CURRENT_SOURCE_DIR}/build_till_no_change.cmake"
     DEPENDS "${main_file}" ${dependent_files}
-    BYPRODUCTS "${main_name}.aux" "${main_name}.log" ${other_byproducts}
+    BYPRODUCTS ${other_byproducts}
   )
   add_custom_target("${main_name}" ALL DEPENDS "${main_name}.pdf")
 endfunction()
