@@ -7,6 +7,7 @@
 \usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage[hidelinks]{hyperref}
+\usepackage{textcomp}
 \usetikzlibrary{calc}
 \graphicspath{{icons/}}
 \input{icons.tex}
@@ -42,6 +43,11 @@
   \section{Education}
 
   \begin{itemize}
+    \def\ongoing{%
+      \tikz[baseline=(t.base)]{
+        \node[fill=orange!30!white, use as bounding box, inner sep=0.25em, font=\small] (t) {\textsc{1st year}}
+      }%
+    }
     \item \ongoing{} \textbf{BSc Computer Science} \dashdiv{} University College London \dashdiv{} 2019-2022
 
       Relevant modules \& courseworks (able to provide code upon request):
@@ -57,8 +63,6 @@
             \item Shows paths with least station, least interchange or paths that avoid certain fare zones.
           \end{itemize}
         \end{itemize}
-
-        \item Design and Professional Skills: debugging, code style, algorithm, etc.
 
         \item Engineering Challenges 1: digital circuit, MIPS architecture.
 
@@ -111,16 +115,18 @@
       \item Frontend built with \href{https://svelte.dev/}{\color{link}Svelte}.
     \end{itemize}
 
-    \item \href{https://paper.sc}{\color{link}\textbf{paper.sc}} \ghurl{https://github.com/micromaomao/schsrch}: CIE past paper search engine \dashdiv{} 2016-2019
+    \item \href{https://paper.sc}{\color{link}\textbf{paper.sc}} \ghurl{https://github.com/micromaomao/schsrch}: CIE past paper quick finder \& search engine \dashdiv{} 2016-2019
 
     \begin{itemize}
+      \item Average of \texttildelow{}9000 daily searches for the last 365 days.
       \item Backend built with Node.js, using Mongodb and Elasticsearch.
       \item Frontend built with React, using Webpack for bundling. Acts as a PWA with ServiceWorker.
       \item Made a PDF viewer: using PDF.js for rendering, wrote own input handling (touch screen \& Macbook trackpad pinch-to-zoom, inertia scrolling, etc.).
       \item Parses the document to find matching question numbers and hence create hyperlinks in the PDF viewer between question paper and mark scheme for the same question.
+      \item Includes extensive unit tests, and builds on Travis CI.
     \end{itemize}
 
-    \item \textbf{ts-player} \ghurl{https://github.com/micromaomao/ts-player}: A terminal recorder that produces files capable of efficient random access \dashdiv{} Jan 2019
+    \item \textbf{ts-player} \ghurl{https://github.com/micromaomao/ts-player}: a terminal recorder that produces files capable of efficient random access \dashdiv{} Jan 2019
 
     \begin{itemize}
       \item Written in Go, used on Linux.
@@ -128,14 +134,10 @@
       \item Uses the Linux termios API to execute process in monitored PTY, and a Golang binding of \href{http://www.leonerd.org.uk/code/libvterm/}{\color{link}libvterm} to parse terminal escape sequences (to get the color and position of characters right).
     \end{itemize}
 
-    \item \textbf{go-ecbpass} \ghurl{https://github.com/micromaomao/go-ecbpass}: deterministic pseudo-random password generator \dashdiv{} Oct 2018
+    \item \textbf{go-ecbpass} \ghurl{https://github.com/micromaomao/go-ecbpass}: a deterministic, stateless pseudo-random password generator \dashdiv{} Oct 2018
 
     \begin{itemize}
-      \item Written in Go, used on Linux.
-
       \item Uses scrypt to derive password for each website based on its domain and the user's master password.
-
-      \item No need to store any data.
     \end{itemize}
 
   \end{itemize}
@@ -144,7 +146,7 @@
 
   \begin{itemize}[itemsep=0.1\parskip]
     \item Able to do some basic 3D modeling \href{https://maowtm.org/Artworks/}{\color{link}(some works I've done)}; also interested in animation and graphic design.
-    \item Currently learning Japanese in spare time.
+    \item Currently learning Japanese in spare time. (Native in Chinese and competent in English)
   \end{itemize}
 
 \end{document}
