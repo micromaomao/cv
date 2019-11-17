@@ -1,12 +1,14 @@
 \documentclass[a4paper]{article}
 \usepackage[utf8x]{inputenc}
+\usepackage[english]{babel}
+\usepackage[calc,showdow,english]{datetime2}
 \usepackage[margin=1.1cm]{geometry}
 \usepackage{helvet}
 \renewcommand{\familydefault}{\sfdefault}
 \usepackage{tikz}
 \usepackage{graphicx}
+\usepackage{enumitem}
 \usepackage{xcolor}
-\usepackage[hidelinks]{hyperref}
 \usepackage{textcomp}
 \usetikzlibrary{calc}
 \graphicspath{{icons/}}
@@ -14,12 +16,13 @@
 \input{styles.tex}
 
 \def\header{%
+  \DTMsetdatestyle{my}%
   \begin{tikzpicture}[every node/.style={inner ysep=0.1cm, inner xsep=0cm, anchor=north west}]
     \coordinate (topleft) at (0, 0);
     \coordinate (topright) at (\textwidth, 0);
 
     \node[font=\Large] (name) at (topleft) {Tingmao Wang};
-    \node (bio) at (name.south west) {Computer Science undergraduate at\uclicon{}UCL};
+    \node (bio) at (name.south west) {{\color{black!50!white}\emph{(\today)}} Computer Science undergraduate at\uclicon{}UCL};
 
     \node[anchor=north east, text width=0.4\textwidth, align=flush right, inner ysep=0cm] (contacts) at (topright)
       {m@maowtm.org \\
@@ -80,7 +83,7 @@
   \section{Skills}
 
   \begin{itemize}[itemsep=0.1\parskip]
-    \item Languages: C, Rust, Go, JavaScript, Python, \TeX.
+    \item Languages: C, Rust, Go, JavaScript, Python, \href{https://github.com/micromaomao/cv/blob/master/cv.tex}{\color{link}\TeX}.
 
     \begin{itemize}
       \item Some introduction to Haskell and Wolfram Language (Mathematica).

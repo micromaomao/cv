@@ -15,7 +15,15 @@
 \setlength{\parindent}{0em}
 \setlength{\parskip}{1em plus 0.5em minus 0.5em}
 
-\usepackage{enumitem}
 \setitemize{topsep=0em, itemsep=0.5\parskip, partopsep=0em, parsep=0.5\parskip}
 
 \colorlet{link}{blue!50!black}
+
+\makeatletter
+\DTMnewdatestyle{my}{%
+  \renewcommand{\DTMDisplaydate}[4]{\DTMshortmonthname{##2} ##1}%
+  \renewcommand{\DTMdisplaydate}{\DTMDisplaydate}%
+}
+\DTMsetdatestyle{my}
+\usepackage[hidelinks, pdftex, pdfauthor={Tingmao Wang}, pdftitle={Tingmao Wang - \today}]{hyperref}
+\makeatother
