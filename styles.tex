@@ -1,6 +1,9 @@
 \makeatletter
-\renewcommand\section{%
-  \@startsection{section}{1}{\z@}{0.1\baselineskip}{0.1\baselineskip \@minus 0.1\baselineskip}{\bfseries\MakeUppercase}*%
+\DeclareRobustCommand\tlabel{%
+  \tikz[overlay, baseline=(t.base)]{\node[anchor=east, font=\normalfont, color=black!30!white] (t) {\#\#};}%
+}
+\renewcommand\section[1]{%
+  \@startsection{section}{1}{\z@}{0.1\baselineskip}{0.1\baselineskip \@minus 0.1\baselineskip}{\bfseries\MakeUppercase}*{\tlabel{}#1}%
 }
 \makeatother
 
