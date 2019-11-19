@@ -1,3 +1,19 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage[english]{babel}
+\usepackage[calc,showdow,english]{datetime2}
+\usepackage[margin=1cm]{geometry}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{textcomp}
+\usetikzlibrary{calc}
+\graphicspath{{icons/}}
+\input{icons.tex}
+
 \makeatletter
 \DeclareRobustCommand\tlabel{%
   \tikz[overlay, baseline=(t.base)]{\node[anchor=east, font=\normalfont, color=black!30!white] (t) {\#\#};}%
@@ -30,3 +46,5 @@
 \DTMsetdatestyle{my}
 \usepackage[hidelinks, pdftex, pdfauthor={Tingmao Wang}, pdftitle={Tingmao Wang - \today}]{hyperref}
 \makeatother
+
+\pagestyle{empty}%
