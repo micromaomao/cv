@@ -1,8 +1,3 @@
-cmake_minimum_required(VERSION 3.0)
-project(cv LANGUAGES NONE)
-
-set(cv_icon_depends "")
-
 function(add_tex)
   set(args "${ARGN}")
   list(GET args 0 main_file)
@@ -25,7 +20,7 @@ function(add_tex)
   add_custom_command(
     OUTPUT "${main_name}.pdf"
     WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
-    COMMAND ${CMAKE_COMMAND} -Dmain_name="${main_name}" -P "${CMAKE_CURRENT_SOURCE_DIR}/build_till_no_change.cmake"
+    COMMAND ${CMAKE_COMMAND} -DBUILD_CMD_TARGET="${main_name}" -P "${CMAKE_CURRENT_LIST_FILE}"
     DEPENDS "${main_file}" ${dependent_files}
     BYPRODUCTS ${other_byproducts}
   )
@@ -45,10 +40,44 @@ function(add_svg_to_tex svg_file)
   set(cv_icon_depends ${cv_icon_depends} "${svg_dir}/${svg_name}.pdf_tex" PARENT_SCOPE)
 endfunction()
 
-add_svg_to_tex(icons/ucl.svg)
-add_svg_to_tex(icons/github.svg)
-add_svg_to_tex(icons/tfl.svg)
-add_svg_to_tex(icons/bluegithub.svg)
-add_tex(cv.tex icons.tex styles.tex ${cv_icon_depends})
-add_custom_target(clean-all
-  COMMAND make clean && rm -rf Makefile CMakeFiles CMakeCache.txt cmake_install.cmake *.fdb_latexmk *.fls *.synctex.gz)
+function(build_till_no_change target_name)
+  message(STATUS "building ${target_name}.pdf...")
+  execute_process(COMMAND pdflatex "${target_name}.tex" RESULT_VARIABLE result)
+  if (NOT result EQUAL 0)
+    message(FATAL_ERROR "pdflatex returned error ${result}.")
+  endif()
+  file(SHA256 "${target_name}.pdf" hash)
+  while(1)
+    message(STATUS "building ${target_name}.pdf again...")
+    execute_process(COMMAND pdflatex "${target_name}.tex" RESULT_VARIABLE result)
+    if (NOT result EQUAL 0)
+      message(FATAL_ERROR "pdflatex returned error ${result}.")
+    endif()
+    file(SHA256 "${target_name}.pdf" new_hash)
+    if(new_hash STREQUAL hash)
+      break()
+    endif()
+    set(hash "${new_hash}")
+  endwhile()
+endfunction()
+
+if(BUILD_CMD_TARGET)
+  build_till_no_change("${BUILD_CMD_TARGET}")
+else()
+  cmake_minimum_required(VERSION 3.0)
+  project(cv LANGUAGES NONE)
+
+  set(cv_icon_depends "")
+
+  if (NOT ${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_BINARY_DIR})
+    message(SEND_ERROR "Out of source build not supported.")
+  endif()
+
+  add_svg_to_tex(icons/ucl.svg)
+  add_svg_to_tex(icons/github.svg)
+  add_svg_to_tex(icons/tfl.svg)
+  add_svg_to_tex(icons/bluegithub.svg)
+  add_tex(cv.tex icons.tex styles.tex ${cv_icon_depends})
+  add_custom_target(clean-all
+    COMMAND make clean && rm -rf Makefile CMakeFiles CMakeCache.txt cmake_install.cmake *.fdb_latexmk *.fls *.synctex.gz)
+endif()
