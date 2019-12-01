@@ -1,55 +1,74 @@
+function(get_filepath_we var file)
+  get_filename_component(dir "${file}" DIRECTORY)
+  get_filename_component(n "${file}" NAME_WE)
+  if(NOT "${dir}" STREQUAL "")
+    string(APPEND dir "/")
+  endif()
+  set(${var} "${dir}${n}" PARENT_SCOPE)
+endfunction()
+
 function(add_tex)
   set(args "${ARGN}")
   list(GET args 0 main_file)
   list(LENGTH args nb_args)
   set(other_byproducts "")
   set(dependent_files "")
+  get_filename_component(main_dir "${main_file}" DIRECTORY)
+  get_filename_component(main_name "${main_file}" NAME_WE)
+  if(NOT "${main_dir}" STREQUAL "")
+    string(APPEND main_dir "/")
+  endif()
+  get_filepath_we(main_we "${main_file}")
   if(nb_args GREATER 1)
     list(SUBLIST args 1 -1 dependent_files)
     foreach(dep ${dependent_files} "${main_file}")
       get_filename_component(dep_name "${dep}" NAME_WE)
       get_filename_component(dep_ext "${dep}" EXT)
       if("${dep_ext}" STREQUAL ".tex")
-        list(APPEND other_byproducts "${dep_name}.aux" "${dep_name}.out" "${dep_name}.log")
+        list(APPEND other_byproducts "${main_dir}${dep_name}.aux" "${main_dir}${dep_name}.out" "${main_dir}${dep_name}.log")
       endif()
     endforeach()
   else()
     set(dependent_files "")
   endif()
-  get_filename_component(main_name "${main_file}" NAME_WE)
   add_custom_command(
-    OUTPUT "${main_name}.pdf"
-    WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    OUTPUT "${main_we}.pdf"
+    WORKING_DIRECTORY "${main_dir}"
     COMMAND ${CMAKE_COMMAND} -DBUILD_CMD_TARGET="${main_name}" -P "${CMAKE_CURRENT_LIST_FILE}"
     DEPENDS "${main_file}" ${dependent_files}
     BYPRODUCTS ${other_byproducts}
+    COMMENT "pdflatex ${main_we}.pdf"
   )
-  add_custom_target("${main_name}" ALL DEPENDS "${main_name}.pdf")
+  add_custom_target("${main_we}" ALL DEPENDS "${main_we}.pdf")
 endfunction()
 
 function(add_svg_to_tex svg_file)
   get_filename_component(svg_dir "${svg_file}" DIRECTORY)
+  if(NOT "${svg_dir}" STREQUAL "")
+    string(APPEND svg_dir "/")
+  endif()
   get_filename_component(svg_name "${svg_file}" NAME_WE)
   add_custom_command(
-    OUTPUT "${svg_dir}/${svg_name}.pdf_tex"
-    WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
-    COMMAND inkscape "${svg_dir}/${svg_name}.svg" --export-pdf="${svg_dir}/${svg_name}.pdf" --export-latex
+    OUTPUT "${svg_dir}${svg_name}.pdf_tex"
+    WORKING_DIRECTORY "${svg_dir}"
+    COMMAND "${INKSCAPE}" "${svg_name}.svg" --export-pdf="${svg_name}.pdf" --export-latex
     DEPENDS "${svg_file}"
-    BYPRODUCTS "${svg_dir}/${svg_name}.pdf"
+    BYPRODUCTS "${svg_dir}${svg_name}.pdf"
+    COMMENT "inkscape ${svg_dir}${svg_name}.pdf_tex"
   )
-  set(cv_icon_depends ${cv_icon_depends} "${svg_dir}/${svg_name}.pdf_tex" PARENT_SCOPE)
+  set(cv_icon_depends ${cv_icon_depends} "${svg_dir}${svg_name}.pdf_tex" PARENT_SCOPE)
 endfunction()
 
 function(build_till_no_change target_name)
   message(STATUS "building ${target_name}.pdf...")
-  execute_process(COMMAND pdflatex "${target_name}.tex" RESULT_VARIABLE result)
+  execute_process(COMMAND pdflatex "${target_name}.tex" RESULT_VARIABLE result OUTPUT_QUIET)
   if (NOT result EQUAL 0)
     message(FATAL_ERROR "pdflatex returned error ${result}.")
   endif()
   file(SHA256 "${target_name}.pdf" hash)
   while(1)
     message(STATUS "building ${target_name}.pdf again...")
-    execute_process(COMMAND pdflatex "${target_name}.tex" RESULT_VARIABLE result)
+    execute_process(COMMAND pdflatex "${target_name}.tex" RESULT_VARIABLE result OUTPUT_QUIET)
     if (NOT result EQUAL 0)
       message(FATAL_ERROR "pdflatex returned error ${result}.")
     endif()
@@ -71,6 +90,11 @@ else()
 
   if (NOT ${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_BINARY_DIR})
     message(SEND_ERROR "Out of source build not supported.")
+  endif()
+
+  find_program(INKSCAPE inkscape DOC "Location for the inkscape program")
+  if("${INKSCAPE}" STREQUAL "INKSCAPE-NOTFOUND")
+    message(SEND_ERROR "Inkscape not found. This is needed to convert svg icons to pdf for tex to include.")
   endif()
 
   add_svg_to_tex(icons/ucl.svg)
