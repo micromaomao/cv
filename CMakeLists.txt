@@ -51,7 +51,7 @@ function(add_svg_to_tex svg_file)
   add_custom_command(
     OUTPUT "${svg_dir}${svg_name}.pdf_tex"
     WORKING_DIRECTORY "${svg_dir}"
-    COMMAND "${INKSCAPE}" "${svg_name}.svg" --export-pdf="${svg_name}.pdf" --export-latex
+    COMMAND "${INKSCAPE}" "${svg_name}.svg" --export-latex -o "${svg_name}.pdf"
     DEPENDS "${svg_file}"
     BYPRODUCTS "${svg_dir}${svg_name}.pdf"
     COMMENT "inkscape ${svg_dir}${svg_name}.pdf_tex"
