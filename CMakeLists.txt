@@ -48,10 +48,14 @@ function(add_svg_to_tex svg_file)
     string(APPEND svg_dir "/")
   endif()
   get_filename_component(svg_name "${svg_file}" NAME_WE)
+  set(output_flags -o "${svg_name}.pdf")
+  if("${inkscape_version}" VERSION_LESS "1.0")
+    set(output_flags "")
+  endif()
   add_custom_command(
     OUTPUT "${svg_dir}${svg_name}.pdf_tex"
     WORKING_DIRECTORY "${svg_dir}"
-    COMMAND "${INKSCAPE}" "${svg_name}.svg" --export-latex -o "${svg_name}.pdf"
+    COMMAND "${INKSCAPE}" "${svg_name}.svg" --export-latex ${output_flags}
     DEPENDS "${svg_file}"
     BYPRODUCTS "${svg_dir}${svg_name}.pdf"
     COMMENT "inkscape ${svg_dir}${svg_name}.pdf_tex"
@@ -96,6 +100,16 @@ else()
   if("${INKSCAPE}" STREQUAL "INKSCAPE-NOTFOUND")
     message(SEND_ERROR "Inkscape not found. This is needed to convert svg icons to pdf for tex to include.")
   endif()
+  execute_process(COMMAND "${INKSCAPE}" "--version" OUTPUT_VARIABLE inkscape_version_out RESULT_VARIABLE res)
+  if(NOT res EQUAL 0)
+    message(SEND_ERROR "inkscape returned ${res}")
+  endif()
+  string(REGEX MATCH "Inkscape ([0-9\\.]+) \\(" inkscape_version_regex "${inkscape_version_out}")
+  if("${inkscape_version_regex}" STREQUAL "")
+    message(SEND_ERROR "Failed to parse version in string ${inkscape_version_out}")
+  endif()
+  set(inkscape_version "${CMAKE_MATCH_1}")
+  message("Found inkscape ${inkscape_version}.")
 
   add_svg_to_tex(icons/ucl.svg)
   add_svg_to_tex(icons/github.svg)
