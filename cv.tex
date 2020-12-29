@@ -104,29 +104,16 @@
 
     \begin{itemize}
       \item Written in Rust, following \href{https://tools.ietf.org/html/rfc6962}{\color{link}RFC-6962}.
-      \item Supports monitoring of CT logs and checking certificates (e.g.\ to see if a new certificate has been issued for a certain domain). Is able to check proofs and detect log misbehaviour.
-      \item Companion project 1: \href{https://blog.maowtm.org/ct/en.html}{\color{link}Interactive blog article on certificate transparency}
-      \item Companion project 2 (work in progress): a public-facing, open source certificate monitoring service.
+      \item Supports monitoring of CT logs and checking certificates. Is able to check proofs and detect log misbehaviour. Also made an \href{https://blog.maowtm.org/ct/en.html}{\color{link}interactive blog article on certificate transparency}.
     \end{itemize}
 
     \item \href{https://leafvote.mww.moe}{\color{link}\textbf{leafvote}} \ghurl{https://github.com/micromaomao/leafvote}: Real-time live voting \dashdiv{} Aug 2018
 
     \begin{itemize}
       \item Technically a personal project, but was built for my high school to use in student union elections.
-      \item Each voter gets a personal QR code printed on paper, and on the day of election everyone gathers in front of an assembly screen and starts voting.
-      \item Front-end built with React, backend Node.js with MongoDB. Communicates with websocket for lower latency. Ballets generated with \LaTeX.
+      \item Like mentimeter, except each voter gets a personal QR code printed on paper to prevent double-voting.
+      \item Front-end: React, backend: Node.js + MongoDB + pdflatex. WebSocket for lower latency.
       \item Successfully handled 300+ voters at once.
-    \end{itemize}
-
-    \item \href{https://paper.sc}{\color{link}\textbf{paper.sc}} \ghurl{https://github.com/micromaomao/schsrch}: An A-level/GCSE past paper finder \& search engine \dashdiv{} 2016-2019
-
-    \begin{itemize}
-      \item Average of \raisebox{0.2\baselineskip}{\texttildelow}9000 daily searches over 365 days (2019-2020); recommended by a number of teachers.
-      \item Backend built with Node.js, using MongoDB and Elasticsearch.
-      \item Frontend built with React, using Webpack for bundling. Acts as a PWA with ServiceWorker.
-      \item Made a PDF viewer: using PDF.js for rendering, wrote own input handling (touch screen \& Macbook trackpad pinch-to-zoom, inertia scrolling, etc.).
-      \item Parses the document to find matching question numbers and hence create hyperlinks in the PDF viewer between question paper and mark scheme for the same question.
-      \item Includes extensive unit tests, and builds on Travis CI.
     \end{itemize}
 
   \end{itemize}
