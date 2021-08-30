@@ -56,7 +56,15 @@
   \section{Work Experience}
 
   \begin{itemize}
-    \item Software Developer $\xrightarrow{\text{Jun 2021}}$ \textbf{Lead Developer} \dashdiv{} CORE Data Systems Ltd \dashdiv{} Jul 2020-present (part-time)
+    \item Technology Intern \dashdiv{} \textbf{Marshall Wace LLP} \dashdiv{} Jul-Aug 2021
+
+    \begin{itemize}
+      \item Designed and built a release dashboard for developers to search for and check the build and deploy status of their projects.
+      \item Used React (front-end), Python/fastapi (backend) and \href{https://oss.redis.com/redisgraph/}{\color{link}Redisgraph} (a graph database based on Redis which supports \href{https://neo4j.com/developer/cypher/}{\color{link}Cypher}). Used APIs to read information from different services including Kubernetes. Used \href{https://prometheus.io/}{\color{link}Prometheus} to export metrics which helped debug performance issues.
+      \item Worked in a team with 2 other interns. Delivered a project presentation and demo to the whole of the Technology division, and incorporated developer feedback. Wrote documentation for extending the system to add other service integrations.
+    \end{itemize}
+
+    \item Software Developer $\xrightarrow{\text{Jun 2021}}$ \textbf{Lead Developer} \dashdiv{} CORE Data Systems Ltd \dashdiv{} Jul 2020-$\ldots$-present (part-time)
 
     \begin{itemize}
       \item Educational game development for GCSE Physics/Chemistry/Biology.
@@ -86,37 +94,15 @@
   \section{Skills}
 
   \begin{itemize}[itemsep=0.1\parskip]
-    \item Languages: (primary) Rust, JavaScript/TypeScript, C++; (fluent) Go, Python, Java, Mathematica (Wolfram Language)
+    \item Languages: (primary) Python, JavaScript/TypeScript, Rust; (fluent) C++, Java
 
     \item Web development: React, Svelte, Plain CSS \& SCSS.
 
-    \item Backend: NodeJS, Rust (Rocket, Diesel), SQLite, PostgreSQL.
+    \item Backend: NodeJS (Express), Python FastAPI, PostgreSQL, Redis.
 
-    \item Linux (scripting, programming, server administration), Git, Docker; OpenGL; some Android development.
+    \item Linux (scripting, programming, server administration), Git, Docker, Kubernetes
 
     \item Security (web \& native) \& Basic cryptography.
-  \end{itemize}
-
-  \section{Personal Projects}
-
-  \begin{itemize}
-
-    \item \textbf{ctclient} \ghurl{https://github.com/micromaomao/ctclient}: Certificate Transparency Log client \dashdiv{} Jul-Aug 2020
-
-    \begin{itemize}
-      \item Written in Rust, following \href{https://tools.ietf.org/html/rfc6962}{\color{link}RFC-6962}.
-      \item Supports monitoring of CT logs and checking certificates. Is able to check proofs and detect log misbehaviour. Also made an \href{https://blog.maowtm.org/ct/en.html}{\color{link}interactive blog article on certificate transparency}.
-    \end{itemize}
-
-    \item \href{https://leafvote.mww.moe}{\color{link}\textbf{leafvote}} \ghurl{https://github.com/micromaomao/leafvote}: Real-time live voting \dashdiv{} Aug 2018
-
-    \begin{itemize}
-      \item Technically a personal project, but was built for my high school to use in student union elections.
-      \item Like Mentimeter, except each voter gets a personal QR code printed on paper to prevent double-voting.
-      \item Front-end: React, backend: Node.js + MongoDB + pdflatex. WebSocket for lower latency.
-      \item Successfully handled 300+ voters at once.
-    \end{itemize}
-
   \end{itemize}
 
 \end{document}
