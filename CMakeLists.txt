@@ -115,6 +115,7 @@ else()
   add_svg_to_tex(icons/github.svg)
   add_svg_to_tex(icons/tfl.svg)
   add_svg_to_tex(icons/bluegithub.svg)
+  add_svg_to_tex(icons/pencil.svg)
   add_tex(cv.tex icons.tex styles.tex ${cv_icon_depends})
   add_custom_target(clean-all
     COMMAND make clean && rm -rf Makefile CMakeFiles CMakeCache.txt cmake_install.cmake *.fdb_latexmk *.fls *.synctex.gz)

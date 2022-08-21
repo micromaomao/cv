@@ -7,11 +7,14 @@
     \coordinate (topright) at (\textwidth, 0);
 
     \node[font=\Large] (name) at (topleft) {Tingmao Wang};
-    \node (bio) at (name.south west) {{\color{black!50!white}\emph{(\today)}} Third year Computer Science undergraduate at\uclicon{}UCL};
+    \node (bio) at (name.south west) {%
+    % {\color{black!50!white}\emph{(\today)}}
+    Graduate Software Engineer at Microsoft UK};
 
     \node[anchor=north east, text width=0.4\textwidth, align=flush right, inner ysep=0cm] (contacts) at (topright)
       {m@maowtm.org \\
-        {\color{link}\href{https://github.com/micromaomao}{\githubicon{} micromaomao}}
+        {\color{link}\href{https://github.com/micromaomao}{\githubicon{} micromaomao}} \\
+        \href{https://blog.maowtm.org/}{\color{link}\pencil{}Blog}
           % \IfFileExists{phone_number.txt}{\\ \input{phone_number.txt}}{}
         };
 
@@ -57,7 +60,7 @@
       \item \textbf{Software Engineer} \dashdiv{} Microsoft \dashdiv{} Sept 2022-(incoming)
     }
 
-    \item \textbf{Lead Developer} \dashdiv{} CORE Data Systems \dashdiv{} Jul 2020-$\ldots$-Aug 2022 (part-time)
+    \item \textbf{Lead Developer} \dashdiv{} CORE Data Systems \dashdiv{} Jul 2020-$\ldots$-Sept 2022 (part-time)
 
     \begin{itemize}
       \item Educational game development for GCSE Physics/Chemistry/Biology.
@@ -95,6 +98,13 @@
     % \end{itemize}
   \end{itemize}
 
+  \section{Publications}
+
+  \begin{itemize}
+    \item \textit{C. Tomy, T. Wang, E. T. Barr, S. Mechtaev} \\
+    ``\textbf{\href{https://2022.esec-fse.org/details/fse-2022-research-papers/55/Modus-A-Datalog-Dialect-for-Building-Container-Images}{\color{link}Modus: A Datalog Dialect for Building Container Images}}'', ESEC/FSE, Sep. 2022
+  \end{itemize}
+
   \section{Personal Projects}
 
   \begin{itemize}
@@ -118,8 +128,6 @@
       \item Average of \raisebox{0.2\baselineskip}{\texttildelow}9000 daily searches over 365 days (2019-2020); recommended by a number of teachers.
       \item Custom PDF viewer with automatic cross-reference to solution sheets built with PDF.js.
     \end{itemize}
-
-    % \item \href{https://blog.maowtm.org/}{\color{link}\textbf{Technical blog}}: Some posts on security.
 
   \end{itemize}
 
