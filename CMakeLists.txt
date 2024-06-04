@@ -87,7 +87,7 @@ endfunction()
 if(BUILD_CMD_TARGET)
   build_till_no_change("${BUILD_CMD_TARGET}")
 else()
-  cmake_minimum_required(VERSION 3.0)
+  cmake_minimum_required(VERSION 3.5)
   project(cv LANGUAGES NONE)
 
   set(cv_icon_depends "")
