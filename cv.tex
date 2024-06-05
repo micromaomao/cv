@@ -1,4 +1,5 @@
 \input{styles.tex}
+\hyphenation{PostgreSQL}
 
 \def\header{%
   \DTMsetdatestyle{my}%
@@ -9,7 +10,7 @@
     \node[font=\Large] (name) at (topleft) {Tingmao Wang};
     \node (bio) at (name.south west) {%
     % {\color{black!50!white}\emph{(\today)}}
-    Software Engineer at Microsoft UK; 2022 Computer Science graduate from UCL};
+    Software Engineer at Microsoft UK. Curious, analytical, and passionate about doing the right thing};
 
     \node[anchor=north east, text width=0.4\textwidth, align=flush right, inner ysep=0cm] (contacts) at (topright)
       {m@{\color{link}\href{https://maowtm.org}{maowtm.org}} \\
@@ -29,27 +30,38 @@
 \begin{document}
   \header
 
+  \section{Skills and knowledge}
+
+  \begin{itemize}
+    \item In-depth Azure experience: App Service, Cognitive Services / OpenAI, CosmosDB, Kubernetes (AKS), Entra~ID (AAD), Bicep/ARM templates and more.
+    \item Fluent in Python, JavaScript/TypeScript, Rust, C\#, C, Powershell, and high adaptability to new languages and frameworks.
+    \item Familiar with Git, Docker, Kubernetes, Grafana, and experienced with developing in both a Linux and Windows environment.
+    \item Experienced with specification, design, architecture, threat modelling and spotting security issues.
+    \item Detailed understanding of protocols including HTTP, TCP/IP, DNS, TLS.
+    \item Strong skill with both front-end and back-end development: React/Next.JS, Svelte/SvelteKit, Wasm, REST APIs, PostgreSQL, SQLite, Redis, OAuth.
+    \item Organised and independent. Able to work from a loose brief, resolve tricky questions, and prototype features rapidly.
+    \item Embrace challenges, collaboration and growth mindset. Working across team to ensure best practice.
+    % \item Experience with GCP and AWS: App and Compute Engine, Storage, S3 and IAM
+  \end{itemize}
+
   \section{Work Experience}
 
   \begin{itemize}
-    \item \textbf{Software Engineer} (L60) \dashdiv{} Microsoft \dashdiv{} Sept 2022--current
+    \item \textbf{Software Engineer} % (L60)
+    \dashdiv{} Microsoft \dashdiv{} Sept 2022--current
 
     \begin{itemize}
-      \item In-depth experience with various Azure products and toolings such as App Service, Cognitive Services / OpenAI, Entra~ID (AAD), Kubernetes, Bicep/ARM templates, various IaaS offerings, and internal security and safe deployment systems.
-      \item Worked on C, C\#, Python, Rust and PowerShell codebases, in both a Linux and Windows environment, at times building and debugging Docker containers or VM images, and creating Grafana dashboards or other observability channels.
-      \item Driven the resolution of performance or design issues via careful debugging and testing, as well as by working closely with team members and cross-team contacts including Azure Networking, ACS, Identity and others.
-      \item Prototyped various features quickly to help stakeholders assess requirements or facilitate customer demos.
-      \item Implemented product features in alignment with internal security and compliance standards, contributed to threat modelling, and raised security concerns which resulted in changes being implemented.
-      \item Wrote design docs for a few product features, created architecture, networking and protocol docs and diagrams, incorporated review feedback, and presented those to stakeholders.
+      \item Worked in a fast-moving, agile team to develop an Azure service for real time AI driven phone scam detection solution.
+      \item Feature development covering the entire specification, design, implementation, testing and deployment process.
+      \item Proactively and independently reached out and worked closely with multiple other Azure teams to resolve performance and integration issues in our dependent services.
+      % \item Resolving performance or design issues via careful debugging and testing, as well as by working closely with team members and cross-team contacts including Azure Networking, ACS, Identity and others.
     \end{itemize}
 
-    \item \textbf{Lead Developer} \dashdiv{} CORE Data Systems \dashdiv{} Jul 2020--Sept 2022 (part-time)
+    \item \textbf{Part-time Lead Developer} \dashdiv{} CORE Data Systems \dashdiv{} Jul 2020--Sept 2022
 
     \begin{itemize}
-      \item Overtook the development of a suite of games for GCSE sciences, maintaining a PHP + React codebase.
-      \item Created PayPal integration to replace the existing manual invoicing.
+      \item Overtook the development of a suite of games for GCSE sciences, maintaining a PHP + React codebase, adding payment and subscriber management features.
       \item Interviewed and onboarded new developers and reviewed their code.
-      \item Took over responsibilities from a leaving lead developer to manage the Google Cloud-based infrastructure, utilising App and Compute Engine, Storage, Cloud SQL and Datastore, and other products.
       \item Saved £60 per month in cloud cost by converting a VM-based reverse proxy to use Cloudflare Workers instead.
     \end{itemize}
 
@@ -57,8 +69,8 @@
 
     \begin{itemize}
       \item Designed and built a dashboard for developers to search for and check the build and deploy status of their projects.
-      \item Used React (front-end), Python/fastapi (backend) and Redisgraph (a graph database based on Redis which supports Cypher). Used APIs to read information from different services including Kubernetes. Used Prometheus to export metrics which helped debug performance issues.
-      \item Worked in a team with 2 other interns. Delivered a project presentation and demo to the whole of the Technology division, and incorporated developer feedback. Wrote documentation for extending the system to add other service integrations.
+      \item Used a graph database to model dependencies. Created Prometheus metrics which surfaced performance issues.
+      \item Worked in a team with 2 other interns to deliver a project presentation and demo to the whole of the Technology division, and incorporated developer feedback.
     \end{itemize}
 
   \end{itemize}
@@ -71,13 +83,10 @@
       First Class Honours: final average 82.84\%. Entered Dean's List for ``outstanding academic performance''.
 
       \begin{itemize}
-        \item Built a Tetris bot in Python which can reliably keep itself alive long enough to reach a 1000 blocks limit, and scored 3rd place in the 140 person class.
+        \item Built a Tetris bot in Python which scored 3rd place in the 140 person class.
+        \item Received a top submission award on a system specification coursework.
 
-        \item Designed and wrote a system specification for a hypothetical good delivery service for vulnerable people during COVID, matching requests with volunteers with an efficient algorithm. Received a top submission award.
-
-        \item Worked with Unity and the Alexa voice API as part of an industry project.
-
-        \item Worked on and helped release a container image build system \href{https://modus-continens.com/}{\color{link}Modus} as my final year dissertation.
+        \item Released a container image build system \href{https://modus-continens.com/}{\color{link}Modus} as my final year dissertation.
       \end{itemize}
 
     % \item \textbf{A-Level} \dashdiv{} (Shenzhen, China) Nanshan Chinese International College \dashdiv{} 2017-2019
@@ -89,32 +98,32 @@
 
   \begin{itemize}
     \item Dec 2023--current: \textbf{Volunteer GCSE Math Tutor} for \href{https://www.theaccessproject.org.uk}{\color{link}The Access Project}
-    \item Jul 2020: Won first place in an algorithm contest of 180 people, rewarded with £1,000 Tesco gift card.
+    \item Jul 2020: Won first place in a algorithm contest of 180 people, rewarded with £1,000 Tesco gift card.
   \end{itemize}
 
   \section{Personal Projects}
 
   \begin{itemize}
-    \item \href{https://chat.maowtm.org}{\textbf{\color{link}chat.maowtm.org}} \ghurl{https://github.com/micromaomao/chat.maowtm.org}: RAG-based AI chatbot designed to answer questions about me, built for fun \dashdiv{} Aug 2023
+    \item \href{https://chat.maowtm.org}{\textbf{\color{link}chat.maowtm.org}} \ghurl{https://github.com/micromaomao/chat.maowtm.org}: RAG-based AI chatbot \dashdiv{} Aug 2023
 
     % \begin{itemize}
-    %   \item Based on Retrieval Augmented Generation, using OpenAI completion and embedding models, built as a Next.JS application with Fluent UI framework and PostgreSQL (Neon) as backend
+    %   \item Based on Retrieval Augmented Generation, usingthe old Winterbells game OpenAI completion and embedding models, built as a Next.JS application with Fluent UI framework and PostgreSQL (Neon) as backend
     % \end{itemize}
 
-    % \item \href{https://books.maowtm.org}{\textbf{\color{link}books.maowtm.org}} \ghurl{https://github.com/micromaomao/books.maowtm.org} \dashdiv{} A 3D virtual bookshelf built with Blender and Three.JS \dashdiv{} Jun 2022
+    % \item \href{https://books.maowtm.org}{\textbf{\color{link}books.maowtm.org}} \ghurl{https://github.com/micromaomao/books.maowtm.org}: Online 3D virtual bookshelf \dashdiv{} Jun 2022
 
-    \item \href{https://bellclone.maowtm.org/}{\color{link}\textbf{Bellclone}} \ghurl{https://github.com/micromaomao/bellclone}: A re-make of the old Winterbells game built with Rust (wasm) and OpenGL \dashdiv{} Sept 2021
+    \item \href{https://bellclone.maowtm.org/}{\color{link}\textbf{Bellclone}} \ghurl{https://github.com/micromaomao/bellclone}: Game built with Rust (Wasm) and OpenGL \dashdiv{} Sept 2021
 
-    \item \href{https://leafvote.mww.moe}{\color{link}\textbf{Leafvote}} \ghurl{https://github.com/micromaomao/leafvote}: A paper-ticket based live voting solution built with React and NodeJS for my high school \dashdiv{} Aug 2018
+    \item \href{https://leafvote.mww.moe}{\color{link}\textbf{Leafvote}} \ghurl{https://github.com/micromaomao/leafvote}: Paper-ticket based live voting solution built with React and NodeJS used by my high school \dashdiv{} Aug 2018
 
     % \begin{itemize}
     %   \item Uses MongoDB, WebSocket for lower latency, and LaTeX for voting ticket generation.
     %   \item Successfully handled 300+ voters at once.
     % \end{itemize}
 
-    \item \textbf{go-ecbpass} \ghurl{https://github.com/micromaomao/go-ecbpass}: A stateless, deterministic password manager built in Go \dashdiv{} Oct 2018
+    \item \textbf{go-ecbpass} \ghurl{https://github.com/micromaomao/go-ecbpass}: Stateless, deterministic password manager built in Go \dashdiv{} Oct 2018
 
-    \item \href{https://paper.sc}{\color{link}\textbf{paper.sc}} \ghurl{https://github.com/micromaomao/schsrch}: A past paper search engine built with React, NodeJS, Elasticsearch and PDF.js \dashdiv{} 2016--2019
+    \item \href{https://paper.sc}{\color{link}\textbf{paper.sc}} \ghurl{https://github.com/micromaomao/schsrch}: Past paper search engine built with React, NodeJS, Elasticsearch and PDF.js \dashdiv{} 2016--2019
 
     % \begin{itemize}
     %   \item Average of \raisebox{0.2\baselineskip}{\texttildelow}9000 daily searches over 365 days (2019-2020); recommended by a number of teachers.
