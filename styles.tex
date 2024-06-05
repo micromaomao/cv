@@ -31,7 +31,8 @@
   }%
 }
 \renewcommand\section[1]{%
-  \@startsection{section}{1}{\z@}{0.1\baselineskip}{0.1\baselineskip \@minus 0.1\baselineskip}{\bfseries\MakeUppercase}*{\tlabel{}#1\makebox[0pt]{\posttlabel}}%
+  % \@startsection name level indent beforeskip afterskip style
+  \@startsection{section}{1}{\z@}{0.1\baselineskip plus 0.5em}{0.1\baselineskip}{\bfseries\MakeUppercase}*{\tlabel{}#1\makebox[0pt]{\posttlabel}}%
 }
 \makeatother
 
@@ -44,10 +45,10 @@
 }}
 
 \setlength{\parindent}{0em}
-\setlength{\parskip}{1em plus 0.5em minus 0.5em}
+\setlength{\parskip}{1em plus 0.2em minus 0.5em}
 \setstretch{1.05}
 
-\setitemize{topsep=0em, itemsep=0.5\parskip minus 0.2em, partopsep=0em, parsep=0.5\parskip}
+\setitemize{topsep=0em, itemsep=0.2\parskip, partopsep=0em, parsep=0.5\parskip}
 \setlist{leftmargin=1.3em}
 
 \colorlet{link}{blue!50!black}
