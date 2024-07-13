@@ -32,19 +32,44 @@
 
   \section{Skills and knowledge}
 
+  {%
+    \centering\makebox[\textwidth]{%
+      \begin{tikzpicture}[box/.style={inner ysep=6pt, inner xsep=4pt, draw=gray, rectangle, text width=0.483\textwidth, align=justify}]%
+      \node[box] (n1) {%
+        \begin{itemize}
+          \setlength\itemsep{3pt}
+          \item In-depth Azure cloud-native development
+          \item Fluent: Python, C\#/.NET, C
+          \item Git, Docker, Kubernetes, Grafana
+          \item Linux development and administration
+          \item Detailed knowledge of HTTP, TCP/IP, DNS, TLS
+        \end{itemize}
+      };
+      \node[color=black, fill=white, right=3pt of n1.north west] {%
+        \textbf{At work}
+      };
+      \node[box, below right=0pt of n1.north east, xshift=10pt] (n2) {%
+        \begin{itemize}
+          \setlength\itemsep{3pt}
+          \item Google Cloud and AWS.
+          \item Fluent: JavaScript/TypeScript, Rust, Java, C++
+          \item Front-end: React, Svelte (NextJS, SvelteKit)
+          \item Back-end: ExpressJS, FastAPI, PostgreSQL, Redis
+          \item Cryptography, algorithms, 3D graphics
+        \end{itemize}
+      };
+      \node[color=black, fill=white, right=3pt of n2.north west] {%
+        \textbf{Personal experience}
+      };
+    \end{tikzpicture}}%
+  }
+
   \begin{itemize}
     \setlength\itemsep{0.1\parskip}
-    \item In-depth Azure experience: App Service, Cognitive Services / OpenAI, CosmosDB, Kubernetes (AKS), Entra~ID (AAD), Bicep/ARM templates and more.
-    % \item In-depth Azure experience from time at Microsoft, also familiar with other cloud platforms including GCP and AWS.
-    \item Fluent in Python, JavaScript/TypeScript, Java, Rust, C\#, C, and high adaptability to new languages and frameworks.
-    \item Familiar with Git, Docker, Kubernetes, Grafana, and experienced with developing in both a Linux and Windows environment.
     \item Experienced with specification, design, architecture, threat modelling and spotting security issues.
-    \item Detailed understanding of protocols including HTTP, TCP/IP, DNS, TLS.
-    \item Strong skills with both front-end and back-end development: React, Svelte, REST APIs, PostgreSQL, SQLite, Redis, OAuth.
     \item Technical writing: \href{https://blog.maowtm.org/}{\color{link}blog articles} on experimentation with Linux high performance networking (DPDK / io\_uring), cloud architecture, deep-dive into the Certificate Transparency protocol, probability/dynamic programming, and more.
     \item Organised and independent. Able to work from a loose brief, resolve tricky questions, and prototype features rapidly.
     \item Embrace challenges, collaboration and growth mindset. Working across teams to ensure best practice.
-    % \item Experience with GCP and AWS: App and Compute Engine, Storage, S3 and IAM
   \end{itemize}
 
   \section{Work Experience}
