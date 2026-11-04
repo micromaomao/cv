@@ -11,13 +11,12 @@
     \node[font=\Large, inner ysep=0cm] (name) at (topleft) {Tingmao Wang};
     \node[inner ysep=0.1cm, yshift=-0.2cm, text width=0.9\textwidth, font=\fontsize{10pt}{13pt}\selectfont] (bio) at (name.south west) {%
     % {\color{black!50!white}\emph{(\today)}}
-      Software engineer with experience in low-level systems programming and debugging,\\ front-end and back-end (particularly NodeJS and Go), and cloud-native development on Azure.\\
-      Active on \href{https://lore.kernel.org/all/?q=f:m@maowtm.org}{\color{link}LKML} with contributions to Landlock and 9p. I'm working on new ways to improve the UX of sandboxing solutions, and I'm a 2022 Computer Science graduate from UCL.
+      Software engineer with experience across systems programming, Linux kernel development (in \\Landlock and 9pfs), front-end, back-end, and cloud-native development on Azure.\\
     };
 
-    \node[anchor=north east, text width=0.4\textwidth, align=flush right, inner ysep=0cm, yshift=0.05cm] (contacts) at (topright)
+    \node[anchor=north east, text width=0.4\textwidth, align=flush right, inner ysep=0cm, yshift=-0.1cm] (contacts) at (topright)
       {{%
-        \setstretch{1.2}%
+        \setstretch{1.3}%
         m@{\color{link}\href{https://maowtm.org}{maowtm.org}}
         \\
         {\color{link}\href{https://github.com/micromaomao}{\githubicon{} micromaomao}} \\
@@ -63,7 +62,7 @@
 
     \begin{itemize}
       \item \textbf{Azure Container Instances}: Working on Confidential Linux containers on Windows (Hyper-V), contributing Go code in security enforcement within the guest and other areas, and responsible for quality testing of the platform.
-      \item Resolved a kernel issue causing random VM crashes, unblocking urgent production rollout.
+      \item Resolved a kernel interrupt issue causing random VM crashes, unblocking urgent production rollout.
       \item Worked around a VMBus-related bug for a Linux SEV-SNP guest under Hyper-V. Wrote CI pipeline to regularly stress-test our kernel tree and caught regressions.
     \end{itemize}
 
@@ -86,6 +85,13 @@
       \item Designed and built a dashboard for developers to search for and check the build and deploy status of their projects.
       \item Used a graph database to model dependencies. Created Prometheus metrics which surfaced performance issues.
     \end{itemize}
+  \end{itemize}
+
+  \section{Presentation}
+
+  \begin{itemize}
+    \item \textbf{Linux Security Summit Europe 2026} \dashdiv{} \href{https://youtu.be/cCfP9cwRdD8}{\color{link}
+Libturnstile: Unprivileged Interactive Sandboxing From Seccomp-unotify To Landlock Supervise}
   \end{itemize}
 
   \section{Education}
@@ -112,7 +118,9 @@
   \section{Personal Projects}
 
   \begin{itemize}
-    \item \href{https://lore.kernel.org/all/cover.1741047969.git.m%40maowtm.org}{\textbf{\color{link}Landlock-supervise}}: Extension to the Landlock LSM to support dynamic permission requests (ongoing project, link is to initial RFC) \dashdiv{} Feb 2025--current
+    \item \textbf{libturnstile} \ghurl{https://github.com/micromaomao/libturnstile}: Seccomp-unotify access tracer and bind-mount-based interactive sandboxing library \dashdiv{} Sept 2026
+
+    \item \href{https://mww.moe/llmut}{\textbf{\color{link}Landlock-supervise}}: Extension to the Landlock LSM to support interactive sandboxing \dashdiv{} Feb 2025--ongoing
 
     \item \href{https://chat.maowtm.org}{\textbf{\color{link}chat.maowtm.org}} \ghurl{https://github.com/micromaomao/chat.maowtm.org}: RAG-based AI chatbot doing an impression of myself (NodeJS + React) \dashdiv{} Aug 2023
 
